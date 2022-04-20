@@ -9,7 +9,7 @@ on:
 jobs:
   build_test:
     name: 'Build and Test'
-	
+
   runs-on: ubuntu-latest
   steps:
   - name: Set environment variables
@@ -32,12 +32,12 @@ jobs:
     shell: bash
     run: |
       dotnet restore .
-	
+
   - name: Build Function App
     shell: bash
     run: |
       dotnet build . -c Release
-	
+
   - name: Test Function App
     shell: bash
     run: |
