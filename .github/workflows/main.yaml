@@ -24,19 +24,16 @@ jobs:
       shell: bash
       run: |
         dotnet restore .
-
     - name: Build solution
       shell: bash
       run: |
         dotnet build . -c Release
-
     - name: Create FunctionApp artifact
       shell: bash
       run: |
         pushd api
         dotnet publish . -c Release -o published
         popd
-
     - name: Upload FunctionApp artifact
       uses: actions/upload-artifact@v2
       with:
@@ -62,9 +59,7 @@ jobs:
         cd published/api
         zip -qq -r apiapp.zip .
         cd $GITHUB_WORKSPACE
-
         mv published/api/apiapp.zip published/apiapp.zip
-
     - name: Release FunctionApp artifact to GitHub
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
